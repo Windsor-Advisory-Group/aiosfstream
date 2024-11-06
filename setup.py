@@ -4,21 +4,21 @@ from setuptools import setup, find_packages
 here = os.path.abspath(os.path.dirname(__file__))
 
 INSTALL_REQUIRES = [
-    "aiocometd>=0.4.1,<0.5.0",
-    "aiohttp>=3.1,<4.0",
-    "PyJWT>=2.1.0,<2.4.1"
+    "aiocometd @ git+https://github.com/Moussa-rs/aiocometd.git@python3.10#egg=aiocometd",
+    "aiohttp",
+    "PyJWT",
 ]
 TESTS_REQUIRE = [
     "asynctest>=0.12.0,<1.0.0",
     "coverage>=4.5,<5.0",
     "flake8",
     "pylint",
-    "mypy"
+    "mypy",
 ]
 DOCS_REQUIRE = [
     "Sphinx>=1.7,<2.0",
     "sphinxcontrib-asyncio>=0.2.0",
-    "sphinx-autodoc-typehints"
+    "sphinx-autodoc-typehints",
 ]
 DEV_REQUIRE = []
 
@@ -37,15 +37,16 @@ setup(
     name=metadata["TITLE"],
     version=metadata["VERSION"],
     description=metadata["DESCRIPTION"],
-    long_description='\n\n'.join((read('DESCRIPTION.rst'),
-                                  read('docs/source/changes.rst'))),
+    long_description="\n\n".join(
+        (read("DESCRIPTION.rst"), read("docs/source/changes.rst"))
+    ),
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: Implementation :: CPython",
         "Framework :: AsyncIO",
-        "License :: OSI Approved :: MIT License"
+        "License :: OSI Approved :: MIT License",
     ],
     keywords=metadata["KEYWORDS"],
     author=metadata["AUTHOR"],
@@ -53,15 +54,15 @@ setup(
     url=metadata["URL"],
     project_urls=metadata["PROJECT_URLS"],
     license="MIT",
-    packages=find_packages(exclude=("tests*", )),
+    packages=find_packages(exclude=("tests*",)),
     python_requires=">=3.6.0",
     install_requires=INSTALL_REQUIRES,
     tests_require=TESTS_REQUIRE,
     extras_require={
         "tests": TESTS_REQUIRE,
         "docs": DOCS_REQUIRE,
-        "dev": DEV_REQUIRE + TESTS_REQUIRE + DOCS_REQUIRE
+        "dev": DEV_REQUIRE + TESTS_REQUIRE + DOCS_REQUIRE,
     },
     include_package_data=True,
-    test_suite="tests"
+    test_suite="tests",
 )
